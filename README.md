@@ -31,21 +31,12 @@
 
 ## How It Works
 
-```
-┌──────────────────┐     ┌──────────────────┐     ┌────────────────────┐
-│   EventKit       │     │  MeetingMonitor  │     │  OverlayWindow     │
-│   CalendarService│────▶│  (timer-driven)  │────▶│  Manager (AppKit)  │
-│                  │ 60s │                  │ 1s  │                    │
-│  fetch events    │     │  check alerts    │     │  show/hide overlay │
-└──────────────────┘     └──────────────────┘     └────────────────────┘
-                              │                         │
-                              │ 0.5s                    ▼
-                              ▼                  ┌────────────────┐
-                        ┌───────────┐            │  OverlayView   │
-                        │ Menu Bar  │            │  (SwiftUI via  │
-                        │ Label +   │            │  NSHostingView)│
-                        │ Dropdown  │            └────────────────┘
-                        └───────────┘
+```mermaid
+graph LR
+    A["📅 CalendarService<br/><sub>EventKit · every 60s</sub>"] --> B["⏱️ MeetingMonitor<br/><sub>check alerts · every 1s</sub>"]
+    B --> C["🖥️ OverlayWindowManager<br/><sub>AppKit · every 0.5s</sub>"]
+    C --> D["🚨 OverlayView<br/><sub>SwiftUI via NSHostingView</sub>"]
+    B --> E["📋 Menu Bar<br/><sub>label + dropdown</sub>"]
 ```
 
 1. **CalendarService** fetches events from EventKit every 60 seconds
@@ -82,6 +73,13 @@ On first launch, Screen Slap will request **Calendar** access. Grant it in Syste
 
 ```bash
 xcodebuild -project screen-slap.xcodeproj -scheme screen-slap -configuration Release build
+```
+
+Then copy to Applications and launch:
+
+```bash
+cp -R ~/Library/Developer/Xcode/DerivedData/screen-slap-*/Build/Products/Release/screen-slap.app /Applications/Screen\ Slap.app
+open /Applications/Screen\ Slap.app
 ```
 
 ## Configuration
