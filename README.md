@@ -32,12 +32,12 @@
 ## How It Works
 
 ```
-┌─────────────────┐     ┌──────────────────┐     ┌────────────────────┐
-│   EventKit      │     │  MeetingMonitor  │     │  OverlayWindow     │
+┌──────────────────┐     ┌──────────────────┐     ┌────────────────────┐
+│   EventKit       │     │  MeetingMonitor  │     │  OverlayWindow     │
 │   CalendarService│────▶│  (timer-driven)  │────▶│  Manager (AppKit)  │
-│                 │ 60s │                  │ 1s  │                    │
-│  fetch events   │     │  check alerts    │     │  show/hide overlay │
-└─────────────────┘     └──────────────────┘     └────────────────────┘
+│                  │ 60s │                  │ 1s  │                    │
+│  fetch events    │     │  check alerts    │     │  show/hide overlay │
+└──────────────────┘     └──────────────────┘     └────────────────────┘
                               │                         │
                               │ 0.5s                    ▼
                               ▼                  ┌────────────────┐
