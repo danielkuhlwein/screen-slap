@@ -1,0 +1,30 @@
+{
+  "fill" : "system-dark",
+  "groups" : [
+    {
+      "blur-material" : 0.9,
+      "layers" : [
+        {
+          "image-name" : "Hand Shake.svg",
+          "name" : "Hand Shake"
+        }
+      ],
+      "lighting" : "individual",
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.5
+      },
+      "specular" : true,
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.2
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
