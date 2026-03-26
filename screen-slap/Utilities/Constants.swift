@@ -18,6 +18,7 @@ enum Constants {
         static let linkHandlerApps = "linkHandlerApps"
         static let soundName = "soundName"
         static let lookforwardDays = "lookforwardDays"
+        static let alertForTentativeEvents = "alertForTentativeEvents"
     }
 
     // MARK: - Default Values
@@ -29,6 +30,7 @@ enum Constants {
         static let playSound: Bool = true
         static let soundName: String = "Glass"
         static let lookforwardDays: Int = 5
+        static let alertForTentativeEvents: Bool = true
     }
 
     // MARK: - Timer Intervals

@@ -176,6 +176,11 @@ struct MeetingEvent: Identifiable, Equatable, Hashable {
 
     // MARK: - Computed Properties
 
+    /// The current user's attendance status for this event
+    var currentUserStatus: Attendee.Status {
+        attendees.first(where: \.isCurrentUser)?.status ?? .unknown
+    }
+
     /// Whether this meeting has already started
     var hasStarted: Bool {
         Date() >= startDate

@@ -11,6 +11,7 @@ final class MeetingMonitorTests: XCTestCase {
     var mock: MockCalendarService!
     var monitor: MeetingMonitor!
     private var savedAlertMinutes: Int!
+    private var savedAlertForTentative: Bool!
 
     override func setUp() {
         super.setUp()
@@ -19,7 +20,9 @@ final class MeetingMonitorTests: XCTestCase {
 
         // Ensure consistent settings for tests
         savedAlertMinutes = AppSettings.shared.alertMinutesBefore
+        savedAlertForTentative = AppSettings.shared.alertForTentativeEvents
         AppSettings.shared.alertMinutesBefore = Constants.Defaults.alertMinutesBefore
+        AppSettings.shared.alertForTentativeEvents = Constants.Defaults.alertForTentativeEvents
     }
 
     override func tearDown() {
@@ -27,6 +30,7 @@ final class MeetingMonitorTests: XCTestCase {
         monitor = nil
         mock = nil
         AppSettings.shared.alertMinutesBefore = savedAlertMinutes
+        AppSettings.shared.alertForTentativeEvents = savedAlertForTentative
         super.tearDown()
     }
 
@@ -279,19 +283,92 @@ final class MeetingMonitorTests: XCTestCase {
         XCTAssertNotNil(monitor.activeAlert)
     }
 
+    // MARK: - Tentative Event Alerts
+
+    func testTentativeEventAlertsWhenEnabled() {
+        AppSettings.shared.alertForTentativeEvents = true
+
+        let meeting = makeMeeting(
+            title: "Maybe Meeting",
+            minutesFromNow: 0.5,
+            meetingURL: URL(string: "https://zoom.us/j/123"),
+            currentUserStatus: .tentative
+        )
+        mock.mockEvents = [meeting]
+
+        monitor.fetchEventsFromCalendar()
+        monitor.checkForAlerts()
+
+        XCTAssertNotNil(monitor.activeAlert)
+        XCTAssertEqual(monitor.activeAlert?.title, "Maybe Meeting")
+    }
+
+    func testTentativeEventSuppressedWhenDisabled() {
+        AppSettings.shared.alertForTentativeEvents = false
+
+        let meeting = makeMeeting(
+            title: "Maybe Meeting",
+            minutesFromNow: 0.5,
+            meetingURL: URL(string: "https://zoom.us/j/123"),
+            currentUserStatus: .tentative
+        )
+        mock.mockEvents = [meeting]
+
+        monitor.fetchEventsFromCalendar()
+        monitor.checkForAlerts()
+
+        XCTAssertNil(monitor.activeAlert)
+    }
+
+    func testAcceptedEventAlertsRegardlessOfTentativeSetting() {
+        AppSettings.shared.alertForTentativeEvents = false
+
+        let meeting = makeMeeting(
+            title: "Accepted Meeting",
+            minutesFromNow: 0.5,
+            meetingURL: URL(string: "https://zoom.us/j/123"),
+            currentUserStatus: .accepted
+        )
+        mock.mockEvents = [meeting]
+
+        monitor.fetchEventsFromCalendar()
+        monitor.checkForAlerts()
+
+        XCTAssertNotNil(monitor.activeAlert)
+        XCTAssertEqual(monitor.activeAlert?.title, "Accepted Meeting")
+    }
+
     // MARK: - Helpers
 
     private func makeMeeting(
         title: String,
         minutesFromNow: Double = 5,
-        meetingURL: URL? = nil
+        meetingURL: URL? = nil,
+        currentUserStatus: MeetingEvent.Attendee.Status? = nil
     ) -> MeetingEvent {
         let start = Date().addingTimeInterval(minutesFromNow * 60)
+
+        var attendees: [MeetingEvent.Attendee] = []
+        if let status = currentUserStatus {
+            attendees = [
+                MeetingEvent.Attendee(
+                    id: "me@test.com",
+                    email: "me@test.com",
+                    name: "Me",
+                    isCurrentUser: true,
+                    status: status,
+                    contactPhoto: nil,
+                    resolvedFromContacts: false
+                )
+            ]
+        }
+
         return MeetingEvent(
             title: title,
             startDate: start,
             endDate: start.addingTimeInterval(3600),
-            meetingURL: meetingURL
+            meetingURL: meetingURL,
+            attendees: attendees
         )
     }
 }

@@ -105,6 +105,7 @@ private struct GeneralSettingsTab: View {
 
             Section("Behavior") {
                 Toggle("Auto-join meetings", isOn: Bindable(settings).autoJoinMeetings)
+                Toggle("Alert for tentative events", isOn: Bindable(settings).alertForTentativeEvents)
                 Toggle("Launch at login", isOn: Bindable(settings).launchAtLogin)
             }
         }

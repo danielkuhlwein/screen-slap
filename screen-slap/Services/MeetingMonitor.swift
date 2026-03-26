@@ -263,6 +263,11 @@ final class MeetingMonitor {
             // Not already dismissed
             guard !dismissedEventIDs.contains(meeting.id) else { return false }
 
+            // Skip tentative events if user opted out of alerts for them
+            if !settings.alertForTentativeEvents && meeting.currentUserStatus == .tentative {
+                return false
+            }
+
             // Not currently snoozed
             if let snoozedID = snoozedEventID, let snoozedUntil, meeting.id == snoozedID {
                 if Date() < snoozedUntil {

@@ -52,6 +52,11 @@ final class AppSettings {
         didSet { defaults.set(lookforwardDays, forKey: Constants.UserDefaultsKeys.lookforwardDays) }
     }
 
+    /// Whether to show overlay alerts for tentatively accepted (maybe) events
+    var alertForTentativeEvents: Bool {
+        didSet { defaults.set(alertForTentativeEvents, forKey: Constants.UserDefaultsKeys.alertForTentativeEvents) }
+    }
+
     /// Whether to launch at login via SMAppService
     var launchAtLogin: Bool {
         didSet {
@@ -139,6 +144,7 @@ final class AppSettings {
             Constants.UserDefaultsKeys.playSound: Constants.Defaults.playSound,
             Constants.UserDefaultsKeys.soundName: Constants.Defaults.soundName,
             Constants.UserDefaultsKeys.lookforwardDays: Constants.Defaults.lookforwardDays,
+            Constants.UserDefaultsKeys.alertForTentativeEvents: Constants.Defaults.alertForTentativeEvents,
         ])
 
         self.alertMinutesBefore = defaults.integer(forKey: Constants.UserDefaultsKeys.alertMinutesBefore)
@@ -147,6 +153,7 @@ final class AppSettings {
         self.playSound = defaults.bool(forKey: Constants.UserDefaultsKeys.playSound)
         self.soundName = defaults.string(forKey: Constants.UserDefaultsKeys.soundName) ?? Constants.Defaults.soundName
         self.lookforwardDays = defaults.integer(forKey: Constants.UserDefaultsKeys.lookforwardDays)
+        self.alertForTentativeEvents = defaults.bool(forKey: Constants.UserDefaultsKeys.alertForTentativeEvents)
         self.linkHandlerApps = (defaults.dictionary(forKey: Constants.UserDefaultsKeys.linkHandlerApps) as? [String: String]) ?? [:]
         self.launchAtLogin = SMAppService.mainApp.status == .enabled
 
