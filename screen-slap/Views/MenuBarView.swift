@@ -183,17 +183,19 @@ private struct MeetingRow: View {
 
             Spacer()
 
-            // Time remaining badge
-            Text(meeting.formattedTimeRemaining)
-                .font(.caption)
-                .monospacedDigit()
-                .foregroundStyle(isHovered ? .white : .secondary)
-                .padding(.horizontal, 6)
-                .padding(.vertical, 2)
-                .background(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(isHovered ? Color.white.opacity(0.2) : Color.primary.opacity(0.06))
-                )
+            // Time remaining badge — TimelineView forces periodic re-evaluation
+            TimelineView(.periodic(from: .now, by: 30)) { _ in
+                Text(meeting.formattedTimeRemaining)
+                    .font(.caption)
+                    .monospacedDigit()
+                    .foregroundStyle(isHovered ? .white : .secondary)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(isHovered ? Color.white.opacity(0.2) : Color.primary.opacity(0.06))
+                    )
+            }
 
             // Join button (opens meeting link directly)
             if let url = meeting.meetingURL {
