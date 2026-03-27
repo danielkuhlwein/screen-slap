@@ -162,19 +162,43 @@ private struct MeetingRow: View {
     var meetingMonitor: MeetingMonitor?
     @State private var isHovered = false
 
+    private var isTentative: Bool {
+        !AppSettings.shared.alertForTentativeEvents && meeting.currentUserStatus == .tentative
+    }
+
     var body: some View {
         HStack(spacing: 8) {
-            // Calendar color dot
-            Circle()
-                .fill(meeting.calendarColor)
-                .frame(width: 8, height: 8)
+            // Calendar color dot — hatched when tentative
+            if isTentative {
+                HatchedCircle(color: meeting.calendarColor)
+                    .frame(width: 8, height: 8)
+            } else {
+                Circle()
+                    .fill(meeting.calendarColor)
+                    .frame(width: 8, height: 8)
+            }
 
             // Title and time range
             VStack(alignment: .leading, spacing: 2) {
-                Text(meeting.title)
-                    .font(.body)
-                    .foregroundStyle(isHovered ? .white : .primary)
-                    .lineLimit(1)
+                HStack(spacing: 4) {
+                    if isTentative {
+                        Text("Maybe")
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundStyle(isHovered ? .white : .orange)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 1)
+                            .background(
+                                RoundedRectangle(cornerRadius: 3)
+                                    .fill(isHovered ? Color.white.opacity(0.2) : Color.orange.opacity(0.12))
+                            )
+                    }
+
+                    Text(meeting.title)
+                        .font(.body)
+                        .foregroundStyle(isHovered ? .white : .primary)
+                        .lineLimit(1)
+                }
 
                 Text(meeting.formattedTimeRange)
                     .font(.subheadline)
@@ -183,8 +207,8 @@ private struct MeetingRow: View {
 
             Spacer()
 
-            // Time remaining badge — TimelineView forces periodic re-evaluation
-            TimelineView(.periodic(from: .now, by: 30)) { _ in
+            // Time remaining badge — refreshes at the top of each clock minute
+            TimelineView(.everyMinute) { _ in
                 Text(meeting.formattedTimeRemaining)
                     .font(.caption)
                     .monospacedDigit()
@@ -216,12 +240,43 @@ private struct MeetingRow: View {
             RoundedRectangle(cornerRadius: 4)
                 .fill(isHovered ? Color.accentColor : Color.clear)
         )
+        .opacity(isTentative && !isHovered ? 0.6 : 1.0)
         .contentShape(Rectangle())
         .onTapGesture {
             meetingMonitor?.triggerTestAlert(for: meeting)
         }
         .onHover { hovering in
             isHovered = hovering
+        }
+    }
+}
+
+// MARK: - Hatched Circle (tentative event indicator)
+
+/// A circle with 45-degree diagonal lines overlaid, indicating tentative attendance.
+private struct HatchedCircle: View {
+    let color: Color
+
+    var body: some View {
+        Canvas { context, size in
+            // Fill the circle
+            let circle = Path(ellipseIn: CGRect(origin: .zero, size: size))
+            context.fill(circle, with: .color(color.opacity(0.35)))
+
+            // Draw 45° diagonal lines across the circle
+            let lineSpacing: CGFloat = 3.0
+            let diagonal = size.width + size.height
+            var lines = Path()
+            var offset: CGFloat = -diagonal
+            while offset < diagonal {
+                lines.move(to: CGPoint(x: offset, y: 0))
+                lines.addLine(to: CGPoint(x: offset + size.height, y: size.height))
+                offset += lineSpacing
+            }
+
+            // Clip to circle and stroke
+            context.clip(to: circle)
+            context.stroke(lines, with: .color(color), lineWidth: 1.5)
         }
     }
 }

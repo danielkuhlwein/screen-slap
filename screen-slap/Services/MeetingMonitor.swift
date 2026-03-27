@@ -223,7 +223,11 @@ final class MeetingMonitor {
             meetingURLOnly: true
         )
 
-        nextMeeting = upcomingMeetings.first
+        if settings.alertForTentativeEvents {
+            nextMeeting = upcomingMeetings.first
+        } else {
+            nextMeeting = upcomingMeetings.first { $0.currentUserStatus != .tentative }
+        }
 
         // Clean up stale dismissals
         cleanupDismissedEvents()

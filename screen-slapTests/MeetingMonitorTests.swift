@@ -338,6 +338,70 @@ final class MeetingMonitorTests: XCTestCase {
         XCTAssertEqual(monitor.activeAlert?.title, "Accepted Meeting")
     }
 
+    // MARK: - Next Meeting Tentative Filtering
+
+    func testNextMeetingSkipsTentativeWhenDisabled() {
+        AppSettings.shared.alertForTentativeEvents = false
+
+        let tentative = makeMeeting(
+            title: "Maybe Meeting",
+            minutesFromNow: 10,
+            meetingURL: URL(string: "https://zoom.us/j/111"),
+            currentUserStatus: .tentative
+        )
+        let accepted = makeMeeting(
+            title: "Confirmed Meeting",
+            minutesFromNow: 20,
+            meetingURL: URL(string: "https://zoom.us/j/222"),
+            currentUserStatus: .accepted
+        )
+        mock.mockEvents = [tentative, accepted]
+
+        monitor.fetchEventsFromCalendar()
+
+        XCTAssertEqual(monitor.upcomingMeetings.count, 2, "Both events should be in upcoming list")
+        XCTAssertEqual(monitor.nextMeeting?.title, "Confirmed Meeting", "nextMeeting should skip tentative event")
+    }
+
+    func testNextMeetingIncludesTentativeWhenEnabled() {
+        AppSettings.shared.alertForTentativeEvents = true
+
+        let tentative = makeMeeting(
+            title: "Maybe Meeting",
+            minutesFromNow: 10,
+            meetingURL: URL(string: "https://zoom.us/j/111"),
+            currentUserStatus: .tentative
+        )
+        let accepted = makeMeeting(
+            title: "Confirmed Meeting",
+            minutesFromNow: 20,
+            meetingURL: URL(string: "https://zoom.us/j/222"),
+            currentUserStatus: .accepted
+        )
+        mock.mockEvents = [tentative, accepted]
+
+        monitor.fetchEventsFromCalendar()
+
+        XCTAssertEqual(monitor.nextMeeting?.title, "Maybe Meeting", "nextMeeting should include tentative when enabled")
+    }
+
+    func testNextMeetingNilWhenOnlyTentativeAndDisabled() {
+        AppSettings.shared.alertForTentativeEvents = false
+
+        let tentative = makeMeeting(
+            title: "Only Maybe",
+            minutesFromNow: 10,
+            meetingURL: URL(string: "https://zoom.us/j/111"),
+            currentUserStatus: .tentative
+        )
+        mock.mockEvents = [tentative]
+
+        monitor.fetchEventsFromCalendar()
+
+        XCTAssertEqual(monitor.upcomingMeetings.count, 1, "Tentative event should still be in upcoming list")
+        XCTAssertNil(monitor.nextMeeting, "nextMeeting should be nil when only tentative events exist")
+    }
+
     // MARK: - Helpers
 
     private func makeMeeting(
