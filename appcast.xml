@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>screen-slap</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Sun, 12 Apr 2026 12:58:33 -0600</pubDate>
+            <link>https://github.com/danielkuhlwein/screen-slap/releases</link>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/danielkuhlwein/screen-slap/releases/download/v0.1.0/ScreenSlap-0.1.0.dmg" length="11774503" type="application/octet-stream" sparkle:edSignature="j/YRFxMw3v0BmsQC+nU9pjQ9NWASLv707j44mSOGJLk/lYBUi4LAz7A/ZALciE1oneO1z+YLjBEroerh3/FlCA=="/>
+        </item>
+    </channel>
+</rss>

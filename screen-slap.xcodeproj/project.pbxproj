@@ -16,10 +16,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXBuildFile section */
+		E1F0A0032FA00B0100000003 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = E1F0A0022FA00B0100000002 /* Sparkle */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E1A4F1002F5C9C32008A038A /* screen-slapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "screen-slapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E4F1322F5C9C31008A038A /* screen-slap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "screen-slap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E1F0A0042FA00B0100000004 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E1E4F1312F5C9C31008A038A /* screen-slap */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E1A4F1012F5C9C32008A038A /* screen-slapTests */ = {
@@ -29,6 +43,9 @@
 		};
 		E1E4F1342F5C9C31008A038A /* screen-slap */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E1F0A0042FA00B0100000004 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
 			path = "screen-slap";
 			sourceTree = "<group>";
 		};
@@ -46,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F0A0032FA00B0100000003 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +129,7 @@
 			);
 			name = "screen-slap";
 			packageProductDependencies = (
+				E1F0A0022FA00B0100000002 /* Sparkle */,
 			);
 			productName = "screen-slap";
 			productReference = E1E4F1322F5C9C31008A038A /* screen-slap.app */;
@@ -144,6 +163,9 @@
 			);
 			mainGroup = E1E4F1292F5C9C31008A038A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E1F0A0012FA00B0100000001 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E1E4F1332F5C9C31008A038A /* Products */;
 			projectDirPath = "";
@@ -203,10 +225,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -223,10 +245,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -273,7 +295,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -337,7 +359,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -366,13 +388,14 @@
 				CODE_SIGN_ENTITLEMENTS = "screen-slap/screen-slap.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "screen-slap/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Screen Slap";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Screen Slap needs access to your calendars to alert you before meetings.";
@@ -382,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -401,15 +424,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "screen-slap/screen-slap.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GU5JQEWL2V;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "screen-slap/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Screen Slap";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Screen Slap needs access to your calendars to alert you before meetings.";
@@ -419,7 +444,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -463,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1F0A0012FA00B0100000001 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1F0A0022FA00B0100000002 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F0A0012FA00B0100000001 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1E4F12A2F5C9C31008A038A /* Project object */;
 }
