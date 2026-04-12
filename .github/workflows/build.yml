@@ -1,4 +1,4 @@
-name: Build & Test
+name: Build
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build, Analyse & Test
+    name: Build & Analyse
     runs-on: macos-15
 
     steps:
@@ -18,20 +18,14 @@ jobs:
       - name: Resolve packages
         run: xcodebuild -resolvePackageDependencies -project screen-slap.xcodeproj -scheme screen-slap
 
+      # Tests require macOS 26+ (Tahoe) which isn't available on CI runners yet.
+      # Build-only verifies compilation and static analysis.
       - name: Build & Analyse
         run: |
           xcodebuild clean build analyze \
             -project screen-slap.xcodeproj \
             -scheme screen-slap \
             -configuration Debug \
-            CODE_SIGN_IDENTITY="-" \
-            CODE_SIGNING_ALLOWED=NO
-
-      - name: Test
-        run: |
-          xcodebuild test \
-            -project screen-slap.xcodeproj \
-            -scheme screen-slap \
-            -configuration Debug \
+            -destination 'generic/platform=macOS' \
             CODE_SIGN_IDENTITY="-" \
             CODE_SIGNING_ALLOWED=NO
