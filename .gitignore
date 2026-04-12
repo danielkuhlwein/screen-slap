@@ -10,5 +10,14 @@ xcuserdata/
 *.swp
 *~
 
+# Release artifacts
+*.dmg
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.build/
+Package.resolved
+
 # Project docs (generated)
 /docs

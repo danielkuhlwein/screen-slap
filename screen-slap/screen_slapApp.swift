@@ -12,6 +12,7 @@ struct screen_slapApp: App {
 
     private let appSettings = AppSettings.shared
     private let calendarService = CalendarService.shared
+    private let updaterController = UpdaterController()
     @State private var meetingMonitor: MeetingMonitor?
     @State private var overlayManager = OverlayWindowManager()
     @State private var lastAlertID: String?
@@ -29,7 +30,7 @@ struct screen_slapApp: App {
         .menuBarExtraStyle(.window)
 
         Settings {
-            SettingsView()
+            SettingsView(updaterController: updaterController)
         }
     }
 
@@ -37,6 +38,8 @@ struct screen_slapApp: App {
 
     private func startMonitoringIfNeeded() {
         guard meetingMonitor == nil else { return }
+
+        updaterController.startUpdater()
 
         let monitor = MeetingMonitor(calendarService: calendarService)
         meetingMonitor = monitor

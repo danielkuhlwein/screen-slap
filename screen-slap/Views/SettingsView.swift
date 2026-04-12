@@ -10,6 +10,8 @@ import UniformTypeIdentifiers
 
 struct SettingsView: View {
 
+    let updaterController: UpdaterController
+
     var body: some View {
         TabView {
             GeneralSettingsTab()
@@ -27,7 +29,7 @@ struct SettingsView: View {
                     Label("Link Handlers", systemImage: "link")
                 }
 
-            AboutTab()
+            AboutTab(updaterController: updaterController)
                 .tabItem {
                     Label("About", systemImage: "info.circle")
                 }
@@ -307,6 +309,8 @@ private struct LinkHandlerSettingsTab: View {
 
 private struct AboutTab: View {
 
+    let updaterController: UpdaterController
+
     var body: some View {
         VStack(spacing: 12) {
             Image(systemName: "bell.badge.fill")
@@ -320,6 +324,10 @@ private struct AboutTab: View {
                 Text("Version \(version)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+            }
+
+            Button("Check for Updates...") {
+                updaterController.checkForUpdates()
             }
 
             Text("Never be late to a meeting again.")
