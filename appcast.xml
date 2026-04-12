@@ -3,6 +3,19 @@
     <channel>
         <title>screen-slap</title>
         <item>
+            <title>0.1.1</title>
+            <pubDate>Sun, 12 Apr 2026 13:13:25 -0600</pubDate>
+            <link>https://github.com/danielkuhlwein/screen-slap/releases</link>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.2</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/danielkuhlwein/screen-slap/releases/download/v0.1.1/ScreenSlap-0.1.1.dmg" length="11774514" type="application/octet-stream" sparkle:edSignature="aJdax5o8fAYihSa3M0ngUa8aoB4wd2ySfpqh7j/G4AJKvWtFDbgchwQE1E4YRonnMezm3FRDk4Y8GmbSEkN1Aw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/danielkuhlwein/screen-slap/releases/download/v0.1.1/Screen%20Slap4-3.delta" sparkle:deltaFrom="3" length="244678" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="XtdHyZowb+OWnHqAmsN6mkty8X9gjtvZ9XBCzlJsvvzKwRA08xODdgHXpVR5TRULBkeMKIr4Z+rNgFtcqWMMCA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.1.0</title>
             <pubDate>Sun, 12 Apr 2026 12:58:33 -0600</pubDate>
             <link>https://github.com/danielkuhlwein/screen-slap/releases</link>
@@ -10,7 +23,7 @@
             <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.2</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/danielkuhlwein/screen-slap/releases/download/v0.1.0/ScreenSlap-0.1.0.dmg" length="11774503" type="application/octet-stream" sparkle:edSignature="j/YRFxMw3v0BmsQC+nU9pjQ9NWASLv707j44mSOGJLk/lYBUi4LAz7A/ZALciE1oneO1z+YLjBEroerh3/FlCA=="/>
+            <enclosure url="https://github.com/danielkuhlwein/screen-slap/releases/download/v0.1.1/ScreenSlap-0.1.0.dmg" length="11774503" type="application/octet-stream" sparkle:edSignature="j/YRFxMw3v0BmsQC+nU9pjQ9NWASLv707j44mSOGJLk/lYBUi4LAz7A/ZALciE1oneO1z+YLjBEroerh3/FlCA=="/>
         </item>
     </channel>
 </rss>
