@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		E1A4F1002F5C9C32008A038A /* screen-slapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "screen-slapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1E4F1322F5C9C31008A038A /* screen-slap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "screen-slap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1E4F1322F5C9C31008A038A /* Screen Slap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Screen Slap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -225,10 +225,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -236,7 +236,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/screen-slap.app/Contents/MacOS/screen-slap";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Screen Slap.app/Contents/MacOS/Screen Slap";
 			};
 			name = Debug;
 		};
@@ -245,10 +245,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slapTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -256,7 +256,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/screen-slap.app/Contents/MacOS/screen-slap";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Screen Slap.app/Contents/MacOS/Screen Slap";
 			};
 			name = Release;
 		};
@@ -388,7 +388,7 @@
 				CODE_SIGN_ENTITLEMENTS = "screen-slap/screen-slap.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -405,9 +405,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slap";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = screen_slap;
+				PRODUCT_NAME = "Screen Slap";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -427,7 +428,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = WG7BK7C4BG;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -444,10 +445,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielkuhlwein.screen-slap";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = screen_slap;
+				PRODUCT_NAME = "Screen Slap";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;

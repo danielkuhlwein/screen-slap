@@ -29,7 +29,7 @@ fi
 VERSION="$1"
 PUBLISH="${2:-}"
 APP_NAME="Screen Slap"
-PRODUCT_NAME="screen-slap"
+PRODUCT_NAME="Screen Slap"
 SCHEME="screen-slap"
 BUILD_DIR="build/release"
 APP_PATH="$BUILD_DIR/$PRODUCT_NAME.app"
@@ -214,7 +214,7 @@ if [ "$PUBLISH" = "--publish" ]; then
 
 ### Installation
 1. Download \`ScreenSlap-${VERSION}.dmg\` below
-2. Open the DMG and drag **screen-slap** to Applications
+2. Open the DMG and drag **Screen Slap** to Applications
 3. Launch from Applications — it lives in your menu bar!
 
 ### Setup

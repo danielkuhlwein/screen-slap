@@ -48,13 +48,18 @@ graph LR
 
 ## Getting Started
 
-### Prerequisites
+### Download
 
-- macOS 15.0 or later
-- Xcode 16+
-- An Apple Developer account (free or paid) for code signing
+1. Grab the latest `.dmg` from [Releases](https://github.com/danielkuhlwein/screen-slap/releases)
+2. Open the DMG and drag **Screen Slap** to Applications
+3. Launch from Applications — that's it!
 
-### Build & Run
+On first launch, Screen Slap will request **Calendar** access. Grant it in System Settings → Privacy & Security → Calendars.
+
+<details>
+<summary><strong>Build from Source</strong></summary>
+
+<br>
 
 ```bash
 git clone https://github.com/danielkuhlwein/screen-slap.git
@@ -62,25 +67,9 @@ cd screen-slap
 open screen-slap.xcodeproj
 ```
 
-In Xcode:
-1. Select the **screen-slap** scheme and your Mac as the run destination
-2. Update the **Signing & Capabilities** tab with your own team / bundle ID
-3. Press <kbd>Cmd</kbd>+<kbd>R</kbd> to build and run
+In Xcode, select the **screen-slap** scheme, update **Signing & Capabilities** with your own team, and press <kbd>Cmd</kbd>+<kbd>R</kbd>.
 
-On first launch, Screen Slap will request **Calendar** access. Grant it in System Settings → Privacy & Security → Calendars.
-
-### Or build from the command line
-
-```bash
-xcodebuild -project screen-slap.xcodeproj -scheme screen-slap -configuration Release build
-```
-
-Then copy to Applications and launch:
-
-```bash
-cp -R ~/Library/Developer/Xcode/DerivedData/screen-slap-*/Build/Products/Release/screen-slap.app /Applications/Screen\ Slap.app
-open /Applications/Screen\ Slap.app
-```
+</details>
 
 ## Configuration
 
@@ -91,7 +80,7 @@ Open **Settings** from the menu bar dropdown (gear icon) to configure:
 | **General** | Alert timing (1–15 min before), snooze duration, auto-join, alert sound, launch at login, look-ahead days |
 | **Calendars** | Toggle which calendars trigger alerts |
 | **Link Handlers** | Map each meeting provider to a specific app (e.g. Zoom → zoom.us) |
-| **About** | Version info and links |
+| **About** | Version info, check for updates |
 
 ## Testing
 
